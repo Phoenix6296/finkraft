@@ -5,10 +5,6 @@ import Grid from "./Components/Grid/Grid"
 const App = () => {
   const [selectedDataSet, setSelectedDataSet] = useState('');
 
-  useEffect(() => {
-    console.log(selectedDataSet, "App.js");
-  }, [selectedDataSet]);
-
   const submitHandler = (selectedDataSet) => {
     setSelectedDataSet(selectedDataSet);
   }
