@@ -10,9 +10,15 @@ const Grid = ({ filterData }) => {
         fetch(`https://dummyjson.com/users`)
             .then(response => response.json())
             .then(data => setGridData(data));
-        console.log(gridData);
     }, []);
 
+    let filteredData = gridData.users;
+    if (filterData === 'data-set-1')
+        filteredData = gridData.users.filter(user => user.gender === 'male');
+    else if (filterData === 'data-set-2')
+        filteredData = gridData.users.filter(user => user.gender === 'female');
+    else
+        filteredData = gridData.users;
 
     const columnDefs = [
         { headerName: "ID", field: "id", sortable: true, resizable: true },
@@ -29,8 +35,7 @@ const Grid = ({ filterData }) => {
         <div className="ag-theme-material" style={{ height: '100vh', width: '100%' }}>
             <AgGridReact
                 columnDefs={columnDefs}
-                //Display rows based on filterData
-                rowData={gridData}
+                rowData={filteredData}
                 pagination={true}
                 paginationPageSize={30}
                 onGridReady={params => params.api.sizeColumnsToFit()}
