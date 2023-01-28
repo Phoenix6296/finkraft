@@ -3,7 +3,7 @@ import { FormControl, Select, MenuItem } from '@mui/material';
 import styles from './Form.module.css';
 import Button from '@mui/material/Button';
 
-const Form = () => {
+const Form = (props) => {
     const [selectedDataSet, setSelectedDataSet] = useState('');
 
     const handleChange = (event) => {
@@ -11,10 +11,11 @@ const Form = () => {
     }
 
     const handleSubmit = (event) => {
-        console.log(selectedDataSet);
+        props.onSubmitHandler(selectedDataSet);
+        console.log(selectedDataSet, "Form.js");
         event.preventDefault();
     }
-
+    
     return (
         <form onSubmit={handleSubmit} className={`${styles.form} ${styles.center}`}>
             <FormControl sx={{ minWidth: 200 }}>
