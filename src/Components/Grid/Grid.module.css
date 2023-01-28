@@ -1,15 +1,3 @@
 .grid {
     text-align: center;
 }
-
-/* Select aggrid header */
-.ag-cell-label-container {
-    color: blue;
-}
-
-.ag-theme-alpine .ag-icon-pin {
-    --ag-icon-font-family: "Font Awesome 5 Free";
-    --ag-icon-font-code-aggregation: "\f247";
-    --ag-icon-font-code-arrows: "\f0b2";
-    --ag-icon-font-code-asc: "\f062";
-}
