@@ -1,3 +1,4 @@
+import styles from './Grid.module.css';
 import { useState, useEffect } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
@@ -33,7 +34,7 @@ const Grid = ({ filterData }) => {
 
 
     return (
-        <div className="ag-theme-material grid" style={{ height: '100vh', width: '100%' }}>
+        <div className={`${styles.grid} ag-theme-alpine`} style={{ height: '100vh', width: '100%' }}>
             <AgGridReact
                 columnDefs={columnDefs}
                 rowData={gridData.users}
