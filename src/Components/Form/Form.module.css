@@ -9,5 +9,7 @@
     width: 100%;
     height: 100vh;
     gap: 3rem;
-    background-color: greenyellow;
+    background: url('../../Assets/background__image.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
 }

@@ -12,14 +12,13 @@ const Form = (props) => {
 
     const handleSubmit = (event) => {
         props.onSubmitHandler(selectedDataSet);
-        console.log(selectedDataSet, "Form.js");
         event.preventDefault();
     }
 
     return (
         <form onSubmit={handleSubmit} className={`${styles.form} ${styles.center}`}>
             <FormControl sx={{ minWidth: 200 }}>
-                <Select value={selectedDataSet} onChange={handleChange}>
+                <Select value={selectedDataSet === '' ? 'data-set-default' : selectedDataSet} onChange={handleChange}>
                     <MenuItem value="data-set-default">Show All</MenuItem>
                     <MenuItem value="data-set-1">Male</MenuItem>
                     <MenuItem value="data-set-2">Female</MenuItem>
