@@ -1,9 +1,11 @@
-import Form from "./Components/Form/Form"
+// import Form from "./Components/Form/Form"
+import Grid from "./Components/Grid/Grid"
 
 const App = () => {
   return (
     <div>
-      <Form />
+      {/* <Form /> */}
+      <Grid />
     </div>
   )
 }
