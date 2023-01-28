@@ -7,18 +7,19 @@ const Grid = ({ filterData }) => {
     const [gridData, setGridData] = useState([]);
 
     useEffect(() => {
-        fetch(`https://dummyjson.com/users`)
-            .then(response => response.json())
-            .then(data => setGridData(data));
-    }, []);
-
-    let filteredData = gridData.users;
-    if (filterData === 'data-set-1')
-        filteredData = gridData.users.filter(user => user.gender === 'male');
-    else if (filterData === 'data-set-2')
-        filteredData = gridData.users.filter(user => user.gender === 'female');
-    else
-        filteredData = gridData.users;
+        if (filterData === 'data-set-1')
+            fetch(`https://dummyjson.com/users/filter?key=gender&value=male`)
+                .then(response => response.json())
+                .then(data => setGridData(data));
+        else if (filterData === 'data-set-2')
+            fetch(`https://dummyjson.com/users/filter?key=gender&value=female`)
+                .then(response => response.json())
+                .then(data => setGridData(data));
+        else
+            fetch(`https://dummyjson.com/users`)
+                .then(response => response.json())
+                .then(data => setGridData(data));
+    }, [filterData]);
 
     const columnDefs = [
         { headerName: "ID", field: "id", sortable: true, resizable: true },
@@ -35,7 +36,7 @@ const Grid = ({ filterData }) => {
         <div className="ag-theme-material grid" style={{ height: '100vh', width: '100%' }}>
             <AgGridReact
                 columnDefs={columnDefs}
-                rowData={filteredData}
+                rowData={gridData.users}
                 pagination={true}
                 paginationPageSize={30}
                 onGridReady={params => params.api.sizeColumnsToFit()}
