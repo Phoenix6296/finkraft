@@ -1,4 +1,3 @@
-import styles from './Grid.module.css';
 import { useState, useEffect } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';

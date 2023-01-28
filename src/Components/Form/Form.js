@@ -1,22 +1,24 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FormControl, Select, MenuItem } from '@mui/material';
 import styles from './Form.module.css';
 import Button from '@mui/material/Button';
 
 const Form = (props) => {
     const [selectedDataSet, setSelectedDataSet] = useState('');
+    const history = useNavigate();
 
     const handleChange = (event) => {
         setSelectedDataSet(event.target.value);
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = () => {
         props.onSubmitHandler(selectedDataSet);
-        event.preventDefault();
+        history('/grid');
     }
 
     return (
-        <form onSubmit={handleSubmit} className={`${styles.form} ${styles.center}`}>
+        <form className={`${styles.form} ${styles.center}`}>
             <FormControl sx={{ minWidth: 200 }}>
                 <Select value={selectedDataSet === '' ? 'data-set-default' : selectedDataSet} onChange={handleChange}>
                     <MenuItem value="data-set-default">Show All</MenuItem>
@@ -28,4 +30,5 @@ const Form = (props) => {
         </form >
     );
 }
+
 export default Form;
